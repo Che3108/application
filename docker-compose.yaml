@@ -3,9 +3,9 @@ services:
     environment:
       - AUTOENCODER_THRESHOLD=${AUTOENCODER_THRESHOLD}
     build:
-      dockerfile: ${PWD}/dockerfiles/nn.dockerfile
+      dockerfile: ./dockerfiles/nn.dockerfile
     volumes:
-      - ${PWD}/models:/models
+      - ./models:/models
     ports:
       - ${PORT_NN_SERVICE}:8008
     restart: always
@@ -15,7 +15,7 @@ services:
       - PORT_NN_SERVICE=${PORT_NN_SERVICE}
       - BOT_KEY=${BOT_KEY}
     build:
-      dockerfile: ${PWD}/dockerfiles/tg_bot.dockerfile
+      dockerfile: ./dockerfiles/tg_bot.dockerfile
     restart: always
     depends_on:
       nn:
